@@ -23,16 +23,17 @@
 		- *riz* models could correct all but 10<sup>-5</sup> stars to
           < 5 mas residuals.
 	* **Recommendations**:
-	    - Code provided [here](https://github.com/lsst-dm/S14DCR)
-		  should be updated to use latest version of sims_photUtils
-		  and include estimates for galaxies and SNe.
+	    - Code from the
+		  [S14DCR analysis](https://github.com/lsst-dm/S14DCR) should
+		  be updated to use latest version of sims_photUtils and
+		  include estimates for galaxies and SNe.
 		- Potentially merge capabilities of SED and Bandpass in
           sims_photUtils with those from
           [chroma](https://github.com/DarkEnergyScienceCollaboration/chroma/);
           see below.
 		- Incorporate DCR calcs into sims pipeline to enable effects
           of DCR corrections on image coadds and differences (see also
-          [here](https://github.com/lsst-dm/W14ImageDifferencing)).
+          [W14ImageDifferencing](https://github.com/lsst-dm/W14ImageDifferencing)).
 
 2. Meyers and Burchat (2015).
     * Estimates of DCR on weak lensing measurements.
