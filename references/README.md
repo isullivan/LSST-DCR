@@ -41,3 +41,12 @@
 	* Primarily measured effects of DCR on shape measurements (2nd
       moments); code can be used to estimate 1st moments for a given
       SED. [Preliminary code](https://github.com/isullivan/LSST-DCR/tree/master/code/notebooks).
+3. Chambers (2007).
+    * Updated summary of astrometric transformations including DCR.
+    * Estimated astrometric accuracy in Pann-STARRS of 1 mas. This
+      assumes accurate atmospheric characterization for each field
+      from sky probes (atmospheric absorption).
+	* **Recommendations**:
+      - Understand these transformations. Suggestion is that C code
+        exits somewhere in the Pan-STARRS codebase, but I could not
+        find it.
