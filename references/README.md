@@ -6,6 +6,8 @@
 	  SEDs.
     * Investigated only airmass effects (no temperature,
 	  etc. dependence).
+    * Utilized 5 mas threshold for "good" DCR corrections based on
+      estimated accuracy required for difference imaging (no dipoles).
     * Summmary of DCR estimates:
         - For *g* and *r*, nearly all stars will exhibit differential DCR
 	      of > 5 mas at parallactic angle differences > 20 deg. or airmass
@@ -36,13 +38,20 @@
           [W14ImageDifferencing](https://github.com/lsst-dm/W14ImageDifferencing)).
 
 2. Meyers and Burchat (2015).
+
     * Estimates of DCR on weak lensing measurements.
 	* Source code for analysis is [available](https://github.com/DarkEnergyScienceCollaboration/chroma/).
 	* Primarily measured effects of DCR on shape measurements (2nd
       moments); code can be used to estimate 1st moments for a given
       SED. [Preliminary code](https://github.com/isullivan/LSST-DCR/tree/master/code/notebooks).
+	* **Recommendations**:
+	    - Check and incorporate DCR code from their chroma package
+          into sims pipelines
+
 3. Chambers (2007).
-    * Updated summary of astrometric transformations including DCR.
+
+    * Updated summary of (more accurate?) astrometric transformations
+      including DCR.
     * Estimated astrometric accuracy in Pann-STARRS of 1 mas. This
       assumes accurate atmospheric characterization for each field
       from sky probes (atmospheric absorption).
