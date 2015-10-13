@@ -1,3 +1,4 @@
+from __future__ import print_function, division, absolute_import
 import numpy as np
 
 def p_s(atmospheric_pressure, water_vapor_pressure = 0.02):
@@ -9,6 +10,13 @@ def p_s(atmospheric_pressure, water_vapor_pressure = 0.02):
 	effective_pressure = 760. * 1.333224 * (atmospheric_pressure - water_vapor_pressure)
 
 	return effective_pressure
+
+def humidity_to_pressure(humidity=20., temperature=15.):
+	pascals_to_atm=1.0 / 101325.0
+	temperature_Kelvin = temperature + 273.15
+	saturation_pressure = (pascals_to_atm * np.exp(77.3450 + 0.0057 *temperature_Kelvin +
+						-7235.0 / temperature_Kelvin) / np.power(temperature_Kelvin, 8.2))
+	return (humidity/100.0) * saturation_pressure
 
 
 def p_w(water_vapor_pressure = 0.02):
