@@ -33,7 +33,7 @@ Notebook index and summary:
 4. `chroma_test4`: attempt to compute DCR from a stellar SED and LSST
    bandpass in the LSST `sims_sed_library`, but using `chroma`.
 
-5. `chroma_test5`: attempt to recapitulate results from `chroma_test4`
+5. `s14_test4`: attempt to recapitulate results from `chroma_test4`
    but using the LSST `sims_photUtils` codebase, including their `Sed`
    and `Bandpass`. Much of this code is modelled off of the W14 code
    listed above.
@@ -43,7 +43,7 @@ Summary of results so far:
 
 After fixing differences in bandpasses and slight differences in default
 values of temperature, humidity and pressure, the `S14` and `chroma` 
-DCR estimates for the stellar SED basically agree (to within $$10^-5$$ 
+DCR estimates for the stellar SED basically agree (to within $$10^{-5}$$ 
 arcsec, or so - at a zd of 70 deg.).
 
 The estimates from `S14` are significantly faster, so now that we have
