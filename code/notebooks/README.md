@@ -41,20 +41,12 @@ Notebook index and summary:
 Summary of results so far:
 --------------------------
 
-Although the DCR calculation functions (as a function of wavelength,
-zenith distance, temperature, humidity, pressure) in (4.) and (5.) are
-identical, including the default temp./hum./pressure values, the final
-integration of DCR over SED * Bandpass result in large differences in
-DCR estimation, particularly in *u*.
+After fixing differences in bandpasses and slight differences in default
+values of temperature, humidity and pressure, the `S14` and `chroma` 
+DCR estimates for the stellar SED basically agree (to within $$10^-5$$ 
+arcsec, or so - at a zd of 70 deg.).
 
-Is this a problem with the integration? Is there an issue with the use
-of fnu vs. flambda? Or is it a result of `sims_photUtils` utilizes the
-entire LSST throughput, and not just a bandpass profile? Or perhaps
-something as simple as a spectral window/wavelength range difference.
-
-Additional notebooks `chroma_test4-copy` and `chroma_test5-copy` test
-the last theory by using a synthetic spectrum with only flux between
-650-660nm. There the numbers look pretty close. So let's continue
-testing...
+The estimates from `S14` are significantly faster, so now that we have
+them in agreement, we'll continue on, using the `S14` methods.
 
 
