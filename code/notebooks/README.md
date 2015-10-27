@@ -46,7 +46,7 @@ values of temperature, humidity and pressure, the `S14` and `chroma`
 DCR estimates for the stellar SED basically agree (to within $$10^{-5}$$ 
 arcsec, or so - at a zd of 70 deg.).
 
-The estimates from `S14` are significantly faster, so now that we have
-them in agreement, we'll continue on, using the `S14` methods.
+The estimates from `S14` are significantly faster (about 15x), so now that we 
+have them in agreement, we'll continue on, using the `S14` methods.
 
 
