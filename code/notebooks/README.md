@@ -4,6 +4,7 @@ Tests of code from
 
 1. [chroma](http://darkenergysciencecollaboration.github.io/chroma/) by J. Meyers and
 2. [LSST W14 and S14](https://github.com/lsst-dm/S14DCR) reports by A.C. Becker.
+3. [palpy](https://github.com/Starlink/pal/blob/master/palRefro.c) which is used by the simulations.
 
 Task: compute DCR given:
 
