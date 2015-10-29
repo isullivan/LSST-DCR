@@ -43,7 +43,7 @@ Notebook index and summary:
    library to project objects through the atmosphere. This is different
    than estimating DCR given an observed location, but `palpy` has a
    function for doing that too. This notebook explores DCR predictions
-   using `palpy`.
+   using `palpy` and compares them to `s14_test4` and `chroma_test4`.
 
 Summary of results so far:
 --------------------------
