@@ -37,6 +37,12 @@ Notebook index and summary:
    but using the LSST `sims_photUtils` codebase, including their `Sed`
    and `Bandpass`. Much of this code is modelled off of the W14 code
    listed above.
+   
+6. `sims_coordUtils_test`: apparently the simulations use the `palpy` 
+   library to project objects through the atmosphere. This is different
+   than estimating DCR given an observed location, but `palpy` has a
+   function for doing that too. This notebook explores DCR predictions
+   using `palpy`.
 
 Summary of results so far:
 --------------------------
@@ -49,4 +55,8 @@ arcsec, or so - at a zd of 70 deg.).
 The estimates from `S14` are significantly faster (about 15x), so now that we 
 have them in agreement, we'll continue on, using the `S14` methods.
 
+The `palpy` library estimates DCR differently than `chroma`
+or `S14` (which do it the same way and get the same results). Thus
+at high zd, the estimates from `palpy` are significantly different.
+Which function should we use. This is to be explored now.
 
