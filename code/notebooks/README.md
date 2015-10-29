@@ -61,3 +61,8 @@ or `S14` (which do it the same way and get the same results). Thus
 at high zd, the estimates from `palpy` are significantly different.
 Which function should we use. This is to be explored now.
 
+Note there are also significant (up to 10'') differences in total diffraction
+(up to 0.3'' in differential chromatic diffraction) depending on if we use the 
+default LSST `Site` parameters vs. the defaults used in the `S14` code! 
+This amounts to altitude, temp., pressure, others.
+
