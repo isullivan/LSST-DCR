@@ -66,3 +66,50 @@ Note there are also significant (up to 10'') differences in total diffraction
 default LSST `Site` parameters vs. the defaults used in the `S14` code! 
 This amounts to altitude, temp., pressure, others.
 
+Update: I am not sure which model phoSim uses. I found the part of their code
+where they seem to do atmospheric refraction, and there is a function that 
+does what `chroma` and `S14` do. In `raytrace/photonmanipulate.cpp`:
+```
+int Image::atmosphericDispersion (Vector *angle) {
+    double dx, dy, adcx = 0.0, adcy = 0.0;
+
+    if (atmosphericdispcenter) {
+        dx = zenith*sin(shiftedAngle);
+        dy = zenith*cos(shiftedAngle);
+        adcx = tan(sqrt(dx*dx + dy*dy))*dx/sqrt(dx*dx + dy*dy)*air.air_refraction_adc/1e6;
+        adcy = tan(sqrt(dx*dx + dy*dy))*dy/sqrt(dx*dx + dy*dy)*air.air_refraction_adc/1e6;
+        if (zenith==0.0) {
+            adcx = 0.0;
+            adcy = 0.0;
+        }
+    }
+    if (atmospheric_dispersion) {
+        dx = -angle->x + zenith*sin(shiftedAngle);
+        dy = -angle->y + zenith*cos(shiftedAngle);
+        angle->x = angle->x + tan(sqrt(dx*dx + dy*dy))*dx/sqrt(dx*dx + dy*dy)*airRefraction/1e6;
+        angle->y = angle->y + tan(sqrt(dx*dx + dy*dy))*dy/sqrt(dx*dx + dy*dy)*airRefraction/1e6;
+        if (atmosphericdispcenter) {
+            angle->x = angle->x - adcx;
+            angle->y = angle->y - adcy;
+        }
+        angle->z = smallAnglePupilNormalize(angle->x,angle->y);
+    }
+    return(0);
+
+}
+```
+where `air_refraction_adc` is computed as follows (in `raytrace/atmospheresetup.cpp`):
+```
+   air.air_refraction_adc=64.328+29498.1/(146-1/central_wavelength/central_wavelength)+255.4/(41 -1/central_wavelength/central_wavelength);
+    air.air_refraction_adc=air.air_refraction_adc*pressure*(1+(1.049-0.0157*temperature)*1e -6*pressure)/720.883/(1+0.003661*temperature);
+    air.air_refraction_adc=air.air_refraction_adc-((0.0624-0.000680/central_wavelength/central_wavelength)/(1+0.003661*temperature)*water_pressure);
+```
+and there is also (in `raytrace/photonmanipulate.cpp`):
+```
+double Image::airIndexRefraction() {
+    double airRefraction = 64.328 + 29498.1/(146-1/wavelength/wavelength) + 255.4/(41-1/wavelength/wavelength);
+    airRefraction = airRefraction*pressure*(1 + (1.049-0.0157*temperature)*1e-6*pressure)/720.883/(1 + 0.003661*temperature);
+    airRefraction = airRefraction - ((0.0624-0.000680/wavelength/wavelength)/(1 + 0.003661*temperature)*water_pressure);
+    if (airrefraction) return(airRefraction); else return(0.0);
+}
+```
