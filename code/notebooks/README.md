@@ -68,7 +68,8 @@ This amounts to altitude, temp., pressure, others.
 
 Update: I am not sure which model phoSim uses. I found the part of their code
 where they seem to do atmospheric refraction, and there is a function that 
-does what `chroma` and `S14` do. In `raytrace/photonmanipulate.cpp`:
+does what `chroma` and `S14` do. In `raytrace/photonmanipulate.cpp`. So it may
+actually just be a difference in atmospheric parameters used...
 ```
 int Image::atmosphericDispersion (Vector *angle) {
     double dx, dy, adcx = 0.0, adcy = 0.0;
