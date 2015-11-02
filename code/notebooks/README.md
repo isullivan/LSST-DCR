@@ -56,10 +56,29 @@ arcsec, or so - at a zd of 70 deg.).
 The estimates from `S14` are significantly faster (about 15x), so now that we 
 have them in agreement, we'll continue on, using the `S14` methods.
 
+`S14` and `chroma` use the same DCR estimation - based upon 
+formulae given by Allens Astrophysical Quantities (Cox et al. 2001), including effects
+due to `pressure`, `temperature`, and the partial pressure of water vapor: `H2O_pressure`.
+For `chroma`, default values for `pressure`, `temperature`, and `H2O_pressure` are taken 
+from LSST PhoSim defaults. Defaults from `S14` are roughly the same but differed 
+slightly due to pressure conversion factors. After those effects are corrected,
+`S14` and `chroma` give the same DCR estimates (including integration over a test
+stellar SED).
+
 The `palpy` library estimates DCR differently than `chroma`
-or `S14` (which do it the same way and get the same results). Thus
-at high zd, the estimates from `palpy` are significantly different.
-Which function should we use. This is to be explored now.
+or `S14`. Thus at high zd, the estimates from `palpy` are 
+significantly different. `palpy.refro()` estimates are based upon:
+```
+- The routine computes the refraction for zenith distances up
+*     to and a little beyond 90 deg using the method of Hohenkerk
+*     and Sinclair (NAO Technical Notes 59 and 63, subsequently adopted
+*     in the Explanatory Supplement, 1992 edition - see section 3.281).
+```
+This reference is [here](http://astro.ukho.gov.uk/data/tn/naotn63.pdf) and
+probably is worth reading!!! Other relevant notes are 
+[here](https://github.com/Starlink/pal/blob/master/palRefro.c).
+
+Which function should we use? This is to be explored now.
 
 Note there are also significant (up to 10'') differences in total diffraction
 (up to 0.3'' in differential chromatic diffraction) depending on if we use the 
