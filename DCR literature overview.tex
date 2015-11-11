@@ -15,9 +15,9 @@
 \maketitle
 
 
-\begin{abstract}
-
-\end{abstract}
+%\begin{abstract}
+%
+%\end{abstract}
 
 \section{Overview}
 Like any medium, the Earth's atmosphere refracts incident light, which for an observer on the Earth's surface results in a deflection of the apparent position of sources towards zenith by about 1 arcsecond per degree of the source from zenith. This bulk effect of refraction is well understood in astronomical applications and is easily accounted for most of the optical through radio wavelengths where the index of refraction is constant, but towards the blue end of the optical spectrum atmospheric dispersion results in increasing refraction. As a result, photons from the same source but different wavelengths that pass through the same filter of a telescope will have slightly different degrees of refraction and will land on different locations of the detector, an effect called Differential Chromatic Refraction (DCR). Differential Chromatic Refraction was first raised as an issue for spectrometry in \cite{Filippenko1982}, where the problem was framed as a loss of flux in slit spectrometers. The issue has now become important for imaging cameras as well, though, because high-resolution cameras such as the LSST will experience significant PSF smearing in the u and g bands (Figure  \ref{Fig:DCR-wavelength-ZA}).
@@ -32,9 +32,9 @@ Like any medium, the Earth's atmosphere refracts incident light, which for an ob
 \end{figure*}
 \begin{figure*}
 	\begin{center}
-		\subfigure[Pressure and Temperature]{\includegraphics[height=2.9in]{DCR_Pressure-Temperature}}
-		\subfigure[Zenith Angle and Pressure]{\includegraphics[height=2.9in]{DCR_ZA-Pressure}}
-		\subfigure[Zenith Angle and Temperature]{\includegraphics[height=2.9in]{DCR_ZA-Temperature}}
+		\subfigure[Pressure and Temperature]{\includegraphics[height=2.8in]{DCR_Pressure-Temperature}}
+		\subfigure[Zenith Angle and Pressure]{\includegraphics[height=2.8in]{DCR_ZA-Pressure}}
+		\subfigure[Zenith Angle and Temperature]{\includegraphics[height=2.8in]{DCR_ZA-Temperature}}
 		\caption{Investigation of maximum DCR under varying conditions for LSST u' band. For a given filter, maximum DCR depends on the zenith angle of observation (airmass), atmospheric pressure, temperature, and, to a lessor degree, humidity. In panels (a) - (c) we keep one of the three main parameters fixed at a nominal value, and map the full range of realistic observing conditions for the remaining two to get a feel for the relative importance of each.}
 		\label{Fig:DCR-P-T}
 	\end{center}
@@ -47,69 +47,74 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
 
 \url{https://github.com/lsst-dm/S14DCR/blob/master/report/S14report_V0-00.pdf}
 
-* Estimated DCR effects directly for LSST using catSim's stellar
-SEDs.
+\begin{itemize}
+	\item Estimated DCR effects directly for LSST using catSim's stellar
+	SEDs.
+	\item Investigated only airmass effects (no temperature, etc. dependence).
+	\item Utilized 5 mas threshold for "good" DCR corrections based on estimated accuracy required for difference imaging (no dipoles).
+	\item Summmary of DCR estimates:
+	
+	\begin{itemize}
+		
+		\item For \textit{g} and \textit{r}, nearly all stars will exhibit differential DCR of $>$ 5 mas at parallactic angle differences $>$ 20 deg. or airmass differences of $>$ 0.15.
+		\item For \textit{i}, similar effects for parallactic angle differences $>$ 25 deg. or airmass differences $>$ 0.2, mostly for M-dwarf stars.
+		\item For \textit{z}, only very large differences in parallactic angle or airmass lead to DCR $>$ 5 mas.
+	\end{itemize}
+	\item DCR corrections tested based on modeling using colors and airmass terms.
+	\begin{itemize}
+		\item Random forest regression models provided most accurate modeling of DCR and refraction.
+		\item \textit{u} and \textit{g} models worked but would be degraded by 10\% color errors (\textit{u}) or 2.5\% color errors (\textit{g}).
+		\item \textit{riz} models could correct all but $10^{-5}$ stars to $<$ 5 mas residuals.
+	\end{itemize}
+\end{itemize}
 
-* Investigated only airmass effects (no temperature, etc. dependence).
-
-* Utilized 5 mas threshold for "good" DCR corrections based on estimated accuracy required for difference imaging (no dipoles).
-
-* Summmary of DCR estimates:
-
-- For *g* and *r*, nearly all stars will exhibit differential DCR of > 5 mas at parallactic angle differences > 20 deg. or airmass differences of > 0.15.
-
-- For *i*, similar effects for parallactic angle differences > 25 deg. or airmass differences > 0.2, mostly for M-dwarf stars.
-
-- For *z*, only very large differences in parallactic angle or airmass lead to DCR > 5 mas.
-
-* DCR corrections tested based on modeling using colors and airmass terms.
-
-- Random forest regression models provided most accurate modeling of DCR and refraction.
-
-- *u* and *g* models worked but would be degraded by 10\% color errors (*u*) or 2.5\% color errors (*g*).
-
-- *riz* models could correct all but $10^{-5}$ stars to $<$ 5 mas residuals.
-
-* **Recommendations**:
-
-- Code from the S14DCR analysis \url{https://github.com/lsst-dm/S14DCR} should be updated to use latest version of sims\_photUtils and include estimates for galaxies and SNe.
-
-- Potentially merge capabilities of SED and Bandpass in sims\_photUtils with those from chroma \url{https://github.com/DarkEnergyScienceCollaboration/chroma/}; see below.
-
-- Incorporate DCR calcs into sims pipeline to enable effects of DCR corrections on image coadds and differences (see also [W14ImageDifferencing]\url{https://github.com/lsst-dm/W14ImageDifferencing}).
+**Recommendations**:
+\begin{itemize}
+	\item Code from the S14DCR analysis \url{https://github.com/lsst-dm/S14DCR} should be updated to use latest version of sims\_photUtils and include estimates for galaxies and SNe.
+	\item Potentially merge capabilities of SED and Bandpass in sims\_photUtils with those from chroma \url{https://github.com/DarkEnergyScienceCollaboration/chroma/}; see below.
+	\item Incorporate DCR calcs into sims pipeline to enable effects of DCR corrections on image coadds and differences (see also \url{https://github.com/lsst-dm/W14ImageDifferencing}).
+\end{itemize}
 
 \subsection{\cite{Meyers2015}}
 
-* Estimates of DCR on weak lensing measurements.
+\begin{itemize}
+	\item Estimates of DCR on weak lensing measurements.
+	\item Source code for analysis is available here:  \url{https://github.com/DarkEnergyScienceCollaboration/chroma/}.
+	\item Primarily measured effects of DCR on shape measurements (2nd moments); code can be used to estimate 1st moments for a given SED. Preliminary code: \url{https://github.com/isullivan/LSST-DCR/tree/master/code/notebooks}.
+\end{itemize}
 
-* Source code for analysis is [available]\url{https://github.com/DarkEnergyScienceCollaboration/chroma/}.
-
-* Primarily measured effects of DCR on shape measurements (2nd moments); code can be used to estimate 1st moments for a given SED. [Preliminary code]\url{https://github.com/isullivan/LSST-DCR/tree/master/code/notebooks}.
-
-* **Recommendations**:
-
-- Check and incorporate DCR code from their chroma package into sims pipelines
+**Recommendations**:
+\begin{itemize}
+	\item Check and incorporate DCR code from their chroma package into sims pipelines
+\end{itemize}
 
 \subsection{\cite{Chambers2005}}
 
-* Updated summary of (more accurate?) astrometric transformations including DCR.
+\begin{itemize}
+	\item Updated summary of (more accurate?) astrometric transformations including DCR.
+	\item Estimated astrometric accuracy in Pann-STARRS of 1 mas. This assumes accurate atmospheric characterization for each field from sky probes (atmospheric absorption).
+\end{itemize}
 
-* Estimated astrometric accuracy in Pann-STARRS of 1 mas. This assumes accurate atmospheric characterization for each field from sky probes (atmospheric absorption).
-
-* **Recommendations**:
-
-- Understand these transformations. Suggestion is that C code exits somewhere in the Pan-STARRS codebase, but I could not find it.
+**Recommendations**:
+\begin{itemize}
+	\item Understand these transformations. Suggestion is that C code exits somewhere in the Pan-STARRS codebase, but I could not find it.
+\end{itemize}
 
 \subsection{\cite{Cuby1998}}
 
 \subsection{\cite{Filippenko1982}}
+\begin{itemize}
+	\item Original paper posing DCR as a problem to be addressed.
+	\item Focused on the effect on spectrometers, with the recommendation that slit spectrometers be aligned with fixed parallactic angle.
+\end{itemize}
 
-* Original paper posing 
 
 \subsection{\cite{AlejandroPlazas2012}}
 
 \subsection{\cite{Stone1996}}
-
+\begin{itemize}
+	\item A good reference giving equations for refraction including the effect of temperature, pressure, and water vapor pressure. Used for calculating Figure \ref{Fig:DCR-P-T} 
+\end{itemize}
 
 
 \bibliographystyle{apj}
