@@ -48,7 +48,7 @@
 	    - Check and incorporate DCR code from their chroma package
           into sims pipelines
 
-3. Chambers (2007).
+3. Chambers (2005).
 
     * Updated summary of (more accurate?) astrometric transformations
       including DCR.
@@ -59,3 +59,13 @@
       - Understand these transformations. Suggestion is that C code
         exits somewhere in the Pan-STARRS codebase, but I could not
         find it.
+
+4. Cuby, Bottini, Picat (1998).
+
+5. Filippenko (1982).
+
+6. Plazas, Bernstein (2012).
+
+7. Stone (1996).
+    * 
+
