@@ -1,29 +1,43 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\citeauthoryear{{Alejandro Plazas} \& Bernstein}{{Alejandro
-  Plazas} \& Bernstein}{2012}]{AlejandroPlazas2012}
-{Alejandro Plazas}, A.,  \& Bernstein, G. 2012, Publications of the
-  Astronomical Society of the Pacific, 124, 1113
+\bibitem[{Alejandro Plazas} and Bernstein, 2012]{AlejandroPlazas2012}
+{Alejandro Plazas}, A. and Bernstein, G. (2012).
+\newblock {Atmospheric Dispersion Effects in Weak Lensing Measurements}.
+\newblock {\em Publications of the Astronomical Society of the Pacific},
+  124(920):1113--1123.
 
-\bibitem[\protect\citeauthoryear{Chambers}{Chambers}{2005}]{Chambers2005}
-Chambers, K.~C. 2005, Astrometry in the Age of the Next Generation of Large
-  Telescopes, 338, 134
+\bibitem[Chambers, 2005]{Chambers2005}
+Chambers, K.~C. (2005).
+\newblock {Astrometry with Pan-STARRS and PS1: Pushing the limits of
+  atmospheric refraction, dispersion, and extinction corrections for wide field
+  imaging.}
+\newblock {\em Astrometry in the Age of the Next Generation of Large
+  Telescopes}, 338(Vieira 2005):134--144.
 
-\bibitem[\protect\citeauthoryear{Cuby, Bottini, \& Picat}{Cuby
-  et~al.}{1998}]{Cuby1998}
-Cuby, J.~G., Bottini, D.,  \& Picat, J.~P. 1998, in Proc. SPIE Vol. 3355, ed.
-  S.~D'Odorico, Vol. 3355, 36
+\bibitem[Cuby et~al., 1998]{Cuby1998}
+Cuby, J.~G., Bottini, D., and Picat, J.~P. (1998).
+\newblock {Handling atmospheric dispersion and differential refraction effects
+  in large-field multiobject spectroscopic observations}.
+\newblock In D'Odorico, S., editor, {\em Proc. SPIE Vol. 3355}, volume 3355,
+  pages 36--47.
 
-\bibitem[\protect\citeauthoryear{Filippenko}{Filippenko}{1982}]{Filippenko1982}
-Filippenko, A.~V. 1982, Publications of the Astronomical Society of the
-  Pacific, 94, 715
+\bibitem[Filippenko, 1982]{Filippenko1982}
+Filippenko, A.~V. (1982).
+\newblock {The importance of atmospheric differential refraction in
+  spectrophotometry}.
+\newblock {\em Publications of the Astronomical Society of the Pacific},
+  94(August):715.
 
-\bibitem[\protect\citeauthoryear{Meyers \& Burchat}{Meyers \&
-  Burchat}{2015}]{Meyers2015}
-Meyers, J.~E.,  \& Burchat, P.~R. 2015, The Astrophysical Journal, 807, 182
+\bibitem[Meyers and Burchat, 2015]{Meyers2015}
+Meyers, J.~E. and Burchat, P.~R. (2015).
+\newblock {IMPACT OF ATMOSPHERIC CHROMATIC EFFECTS ON WEAK LENSING
+  MEASUREMENTS}.
+\newblock {\em The Astrophysical Journal}, 807(2):182.
 
-\bibitem[\protect\citeauthoryear{Stone}{Stone}{1996}]{Stone1996}
-Stone, R.~C. 1996, Publications of the Astronomical Society of the Pacific,
-  108, 1051
+\bibitem[Stone, 1996]{Stone1996}
+Stone, R.~C. (1996).
+\newblock {An Accurate Method for Computing Atmospheric Refraction}.
+\newblock {\em Publications of the Astronomical Society of the Pacific},
+  108(729):1051.
 
 \end{thebibliography}
