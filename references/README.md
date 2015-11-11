@@ -1,9 +1,27 @@
 # Summary of References on DCR #
 
+1. Filippenko (1982).
+    * Seminal paper on atmospheric DCR on spectrophotometry
+    * Uses the refractive index of dry air from (Edlén 1953;
+      Coleman, Bozman, and Meggers 1960). Corrects for ambient temperature and
+      atmospheric pressure using (Barrell 1951).
+
+2. C.Y. Hohenkerk and A.T. Sinclair, The Computation of Angular
+   Atmospheric Refraction at Large Zenith Angles.
+    * Good background.
+    * Uses a different implementation, "the method recommended by Auer
+      and Standish".
+    * This is the function implemented in `pypal` which is used by
+      some (but not all?) code in the `sims` stack.
+    * Uses a model atmosphere with temperature and pressure gradients,
+      integrated to the surface.  This I believe is different from
+      (1.) which assumes a single refractive surface.
+
 1. [Report on Summer 2014 Production: Analysis of DCR (Andy Becker)](https://github.com/lsst-dm/S14DCR/blob/master/report/S14report_V0-00.pdf)
 
     * Estimated DCR effects directly for LSST using catSim's stellar
 	  SEDs.
+    * Appears to use the formulae given in Filippenko (1982) for DCR estimation.
     * Investigated only airmass effects (no temperature,
 	  etc. dependence).
     * Utilized 5 mas threshold for "good" DCR corrections based on
@@ -29,7 +47,7 @@
 		  [S14DCR analysis](https://github.com/lsst-dm/S14DCR) should
 		  be updated to use latest version of sims_photUtils and
 		  include estimates for galaxies and SNe.
-		- Potentially merge capabilities of SED and Bandpass in
+ 		- Potentially merge capabilities of SED and Bandpass in
           sims_photUtils with those from
           [chroma](https://github.com/DarkEnergyScienceCollaboration/chroma/);
           see below.
@@ -40,13 +58,17 @@
 2. Meyers and Burchat (2015).
 
     * Estimates of DCR on weak lensing measurements.
+    * Uses the formulae given in Filippenko (1982) for DCR estimation. 
 	* Source code for analysis is [available](https://github.com/DarkEnergyScienceCollaboration/chroma/).
 	* Primarily measured effects of DCR on shape measurements (2nd
       moments); code can be used to estimate 1st moments for a given
       SED. [Preliminary code](https://github.com/isullivan/LSST-DCR/tree/master/code/notebooks).
-	* **Recommendations**:
-	    - Check and incorporate DCR code from their chroma package
-          into sims pipelines
+    * Investigated means for correction/mitigation/prediction based on
+      colors using Extra Trees Regression (ETR, claimed to be better than
+      Random Forests regression which is what the `S14` report (above)
+      used).
+    * Estimation is that the DCR offset is not a problem, but only
+      shown (in figures) for *ri* bands. ETR improves this prediction.
 
 3. Chambers (2005).
 
