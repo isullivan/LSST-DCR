@@ -97,6 +97,35 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
           \url{https://github.com/lsst-dm/W14ImageDifferencing}).
 \end{itemize}
 
+
+\begin{figure}[t!]
+	\begin{center}
+		\subfigure[Difference image with no DCR correction]{\includegraphics[height=2.8in]{9903215v1_f5a.png}}
+		\subfigure[Difference image with DCR correction]{\includegraphics[height=2.8in]{9903215v1_f5b.png}}
+		\caption{(\citeauthor{AlcockDiffIm1999} Fig. 5.)— "The effect of differential refraction on difference images. Left image is a difference image without applying any correction for differential refraction effects. The right image is the same image with our correction technique applied. The scale of the noise structures is much reduced although not completely removed. The two images are 100′′ ×100′′. The residual object in the centre is due to a variable star"}
+		\label{Fig:Alcock5}
+	\end{center}
+\end{figure}
+
+
+\subsection{\cite{AlcockDiffIm1999}}
+\begin{itemize}
+	\item Investigation of DiffIm for MaCHO search.
+	\item This is the only reference I could find that described a method
+	to correct for DCR for image differencing. Suggestion is to compute a
+	per-pixel color map of each field (using images near zenith or at
+	least at the same airmass and parallactic angle). They then
+	interpolated the pixel values in the template image based on the
+	color map pixel values, the airmass of the observation relative to
+	the reference image, and the parallactic angle of the observation.
+	\item Improvements were obtained by differencing a number of images
+	taken at a range of airmasses to obtain a semi-empirical result for
+	the offset required with color and airmass (relative to the
+	reference image).
+	\item The results shown in Figure 5 suggest moderate success with this
+	strategy.
+\end{itemize}
+
 \subsection{\cite{Meyers2015}}
 
 \begin{itemize}
@@ -141,32 +170,6 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
           recommendation that slit spectrometers be aligned with fixed
           parallactic angle.
 \end{itemize}
-
-\subsection{\cite{AlcockDiffIm1999}}
-\begin{itemize}
-\item Investigation of DiffIm for MaCHO search.
-\item This is the only reference I could find that described a method
-  to correct for DCR for image differencing. Suggestion is to compute a
-  per-pixel color map of each field (using images near zenith or at
-  least at the same airmass and parallactic angle). They then
-  interpolated the pixel values in the template image based on the
-  color map pixel values, the airmass of the observation relative to
-  the reference image, and the parallactic angle of the observation.
-\item Improvements were obtained by differencing a number of images
-  taken at a range of airmasses to obtain a semi-empirical result for
-  the offset required with color and airmass (relative to the
-  reference image).
-\item The results shown in Figure 5 suggest moderate success with this
-  strategy.
-\end{itemize}
-\begin{figure*}[t!]
-	\begin{center}
-		\subfigure[Difference image with no DCR correction]{\includegraphics[height=2.8in]{9903215v1_f5a.png}}
-		\subfigure[Difference image with DCR correction]{\includegraphics[height=2.8in]{9903215v1_f5b.png}}
-		\caption{(\citeauthor{AlcockDiffIm1999} Fig. 5.)— "The effect of differential refraction on difference images. Left image is a difference image without applying any correction for differential refraction effects. The right image is the same image with our correction technique applied. The scale of the noise structures is much reduced although not completely removed. The two images are 100′′ ×100′′. The residual object in the centre is due to a variable star"}
-		\label{Fig:Alcock5}
-	\end{center}
-\end{figure*}
 
 \subsection{\cite{AlejandroPlazas2012}}
 
