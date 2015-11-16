@@ -10,7 +10,7 @@
 
 %opening
 \title{Differential Chromatic Refraction: literature overview}
-\author{I. S. Sullivan, D. Reiss}
+\author{I. S. Sullivan, D. J. Reiss}
 
 \begin{document}
 
@@ -52,54 +52,84 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
 \begin{itemize}
 	\item Estimated DCR effects directly for LSST using catSim's stellar
 	SEDs.
-	\item Investigated only airmass effects (no temperature, etc. dependence).
-	\item Utilized 5 mas threshold for "good" DCR corrections based on estimated accuracy required for difference imaging (no dipoles).
+	\item Investigated only airmass effects (no temperature,
+          etc. dependence).
+	\item Utilized 5 mas threshold for "good" DCR corrections
+          based on estimated accuracy required for difference imaging
+          (no dipoles).
 	\item Summmary of DCR estimates:
 	
 	\begin{itemize}
 		
-		\item For \textit{g} and \textit{r}, nearly all stars will exhibit differential DCR of $>$ 5 mas at parallactic angle differences $>$ 20 deg. or airmass differences of $>$ 0.15.
-		\item For \textit{i}, similar effects for parallactic angle differences $>$ 25 deg. or airmass differences $>$ 0.2, mostly for M-dwarf stars.
-		\item For \textit{z}, only very large differences in parallactic angle or airmass lead to DCR $>$ 5 mas.
+		\item For \textit{g} and \textit{r}, nearly all stars
+                  will exhibit differential DCR of $>$ 5 mas at
+                  parallactic angle differences $>$ 20 deg. or airmass
+                  differences of $>$ 0.15.
+		\item For \textit{i}, similar effects for parallactic
+                  angle differences $>$ 25 deg. or airmass differences
+                  $>$ 0.2, mostly for M-dwarf stars.
+		\item For \textit{z}, only very large differences in
+                  parallactic angle or airmass lead to DCR $>$ 5 mas.
 	\end{itemize}
 	\item DCR corrections tested based on modeling using colors and airmass terms.
 	\begin{itemize}
-		\item Random forest regression models provided most accurate modeling of DCR and refraction.
-		\item \textit{u} and \textit{g} models worked but would be degraded by 10\% color errors (\textit{u}) or 2.5\% color errors (\textit{g}).
-		\item \textit{riz} models could correct all but $10^{-5}$ stars to $<$ 5 mas residuals.
+		\item Random forest regression models provided most
+                  accurate modeling of DCR and refraction.
+		\item \textit{u} and \textit{g} models worked but
+                  would be degraded by 10\% color errors (\textit{u})
+                  or 2.5\% color errors (\textit{g}).
+		\item \textit{riz} models could correct all but
+                  $10^{-5}$ stars to $<$ 5 mas residuals.
 	\end{itemize}
 \end{itemize}
 
 **Recommendations**:
 \begin{itemize}
-	\item Code from the S14DCR analysis \url{https://github.com/lsst-dm/S14DCR} should be updated to use latest version of sims\_photUtils and include estimates for galaxies and SNe.
-	\item Potentially merge capabilities of SED and Bandpass in sims\_photUtils with those from chroma \url{https://github.com/DarkEnergyScienceCollaboration/chroma/}; see below.
-	\item Incorporate DCR calcs into sims pipeline to enable effects of DCR corrections on image coadds and differences (see also \url{https://github.com/lsst-dm/W14ImageDifferencing}).
+	\item Code from the S14DCR analysis
+          \url{https://github.com/lsst-dm/S14DCR} should be updated to
+          use latest version of sims\_photUtils and include estimates
+          for galaxies and SNe.
+%	\item Potentially merge capabilities of SED and Bandpass in sims\_photUtils with those from chroma \url{https://github.com/DarkEnergyScienceCollaboration/chroma/}; see below.
+	\item Understand how DCR calcs are performed in sims pipeline
+          to compare the results of these simulations to DCR effects
+          in simulated images, and to enable investigation of DCR
+          corrections on image coadds and differences (see also
+          \url{https://github.com/lsst-dm/W14ImageDifferencing}).
 \end{itemize}
 
 \subsection{\cite{Meyers2015}}
 
 \begin{itemize}
 	\item Estimates of DCR on weak lensing measurements.
-	\item Source code for analysis is available here:  \url{https://github.com/DarkEnergyScienceCollaboration/chroma/}.
-	\item Primarily measured effects of DCR on shape measurements (2nd moments); code can be used to estimate 1st moments for a given SED. Preliminary code: \url{https://github.com/isullivan/LSST-DCR/tree/master/code/notebooks}.
+	\item Source code for analysis is available here:
+          \url{https://github.com/DarkEnergyScienceCollaboration/chroma/}.
+	\item Primarily measured effects of DCR on shape measurements
+          (2nd moments); code can be used to estimate 1st moments for
+          a given SED. Preliminary code:
+          \url{https://github.com/isullivan/LSST-DCR/tree/master/code/notebooks}.
+        \item Also investigated effects of 1st moments for galaxy SEDs
+          and compensation via extra trees regression on LSST colors.
 \end{itemize}
 
-**Recommendations**:
-\begin{itemize}
-	\item Check and incorporate DCR code from their chroma package into sims pipelines
-\end{itemize}
+%**Recommendations**:
+%\begin{itemize}
+%	\item Check and incorporate DCR code from their chroma package into sims pipelines
+%\end{itemize}
 
 \subsection{\cite{Chambers2005}}
 
 \begin{itemize}
 	\item Updated summary of (more accurate?) astrometric transformations including DCR.
-	\item Estimated astrometric accuracy in Pann-STARRS of 1 mas. This assumes accurate atmospheric characterization for each field from sky probes (atmospheric absorption).
+	\item Estimated astrometric accuracy in Pann-STARRS of 1
+          mas. This assumes accurate atmospheric characterization for
+          each field from sky probes (atmospheric absorption).
 \end{itemize}
 
 **Recommendations**:
 \begin{itemize}
-	\item Understand these transformations. Suggestion is that C code exits somewhere in the Pan-STARRS codebase, but I could not find it.
+	\item Understand these transformations. Suggestion is that C
+          code exits somewhere in the Pan-STARRS codebase, but I could
+          not find it.
 \end{itemize}
 
 \subsection{\cite{Cuby1998}}
@@ -107,16 +137,34 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
 \subsection{\cite{Filippenko1982}}
 \begin{itemize}
 	\item Original paper posing DCR as a problem to be addressed.
-	\item Focused on the effect on spectrometers, with the recommendation that slit spectrometers be aligned with fixed parallactic angle.
+	\item Focused on the effect on spectrometers, with the
+          recommendation that slit spectrometers be aligned with fixed
+          parallactic angle.
 \end{itemize}
 
+\subsection{\cite{AlcockDiffIm1999}}
+\begin{itemize}
+\item Investigation of DiffIm for MaCHO search.
+\item This is the only reference I could find that described a method
+  to correct for DCR for image differencing. Suggestion is to compute a
+  per-pixel color map of each field (using images near zenith or at
+  least at the same airmass and parallactic angle). They then
+  interpolated the pixel values in the template image based on the
+  color map pixel values, the airmass of the observation relative to
+  the reference image, and the parallactic angle of the observation.
+\item The results shown in Figure 5 suggest moderate success with this
+  strategy.
+\end{itemize}
 
 \subsection{\cite{AlejandroPlazas2012}}
 
 \subsection{\cite{Stone1996}}
 \begin{itemize}
-	\item A good reference giving equations for refraction including the effect of temperature, pressure, and water vapor pressure. Used for calculating Figure \ref{Fig:DCR-P-T} 	
-	
+	\item A good reference giving equations for refraction
+          including the effect of temperature, pressure, and water
+          vapor pressure. Used for calculating Figure
+          \ref{Fig:DCR-P-T}
+
 \end{itemize}
 
 \begin{table}[h!]
