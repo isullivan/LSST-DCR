@@ -122,7 +122,7 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
 	taken at a range of airmasses to obtain a semi-empirical result for
 	the offset required with color and airmass (relative to the
 	reference image).
-	\item The results shown in Figure 5 suggest moderate success with this
+	\item The results shown in Figure \ref{Fig:Alcock5} suggest moderate success with this
 	strategy.
 \end{itemize}
 
@@ -161,17 +161,11 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
           not find it.
 \end{itemize}
 
-\subsection{\cite{Cuby1998}}
-
-\subsection{\cite{Filippenko1982}}
-\begin{itemize}
-	\item Original paper posing DCR as a problem to be addressed.
-	\item Focused on the effect on spectrometers, with the
-          recommendation that slit spectrometers be aligned with fixed
-          parallactic angle.
-\end{itemize}
-
 \subsection{\cite{AlejandroPlazas2012}}
+\begin{itemize}
+	\item Investigates the effect of DCR on weak lensing measurements through the second moment of galaxy shape measurements.
+	\item Finds that "Using standard galaxy and stellar spectral templates we calculate the resultant errors in the griz bands, and find that atmospheric dispersion shear systematics, left uncorrected, are up to 6 and 2 times larger in g and r bands, respectively, than the thresholds at which they become significant contributors to the DES error budget, but can be safely ignored in i and z bands. For the stricter \textit{LSST} requirements, the factors are about 30, 10, and 3 in g, r, and i bands, respectively"
+\end{itemize}
 
 \subsection{\cite{Stone1996}}
 \begin{itemize}
@@ -179,6 +173,7 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
           including the effect of temperature, pressure, and water
           vapor pressure. Used for calculating Figure
           \ref{Fig:DCR-P-T}
+          We summarize the environmental and observing condition parameters in Table \ref{table:parameters} and list the units and range of validity for the equations for each.
 
 \end{itemize}
 
@@ -194,9 +189,11 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
 		$\phi$ & $0^\circ \leq \phi < 360^\circ$ & Latitude of the observing site & Degrees \\
 		$h$ & $0\,m\leq h$ & Elevation of the observing site & meters \\
 		$z_0$ & $0^\circ\leq z_0 < 75^\circ$ & Zenith angle & Degrees
+		
 	\end{tabular}
 	\end{center}
 	\caption{Definition of parameters and their units}
+	\label{table:parameters}
 \end{table}
 %\vspace{-0.7cm}
 
@@ -233,6 +230,21 @@ If we assume an exponential density profile for the atmosphere, then the ratio $
 \end{align}
 where $m$ is the average mass of molecules in the atmosphere, $R_\oplus$ is the radius of the Earth, $k_B$ is the Boltzmann constant, and $g_0$ is the acceleration due to gravity at the Earth's surface.
 
+
+
+\subsection{\cite{Filippenko1982}}
+\begin{itemize}
+	\item Original paper posing DCR as a problem to be addressed. Mostly of historical interest.
+	\item Focused on the effect on spectrometers, with the
+	recommendation that slit spectrometers be aligned with fixed
+	parallactic angle. 
+\end{itemize}
+
+\subsection{\cite{Cuby1998}}
+\begin{itemize}
+	\item As with \citeauthor{Filippenko1982}, concerned with flux loss in slit spectrometers. 
+	\item Discusses observing strategies for spectrometers to keep flux loss $< 20\%$ at $z_0<50^\circ$
+\end{itemize}
 \bibliographystyle{apalike}
 \bibliography{DCR_references}
 
