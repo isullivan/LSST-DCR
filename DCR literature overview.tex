@@ -28,7 +28,7 @@ Like any medium, the Earth's atmosphere refracts incident light, which for an ob
 \begin{figure*}
 	\begin{center}
 		\includegraphics[height=9in]{DCR_ZA-wavelength}
-		\caption{Maximum DCR over a range of zenith angles and wavelengths. Each wavelength is treated as the center wavelength of a band with 20\% bandwidth, and maximum DCR is calculated for the difference in position of two photons from the same source at opposite ends of the band.}
+		\caption{Maximum DCR over a range of zenith angles and wavelengths. Each wavelength is treated as the center wavelength of a band with bandwidth interpolated between the actual LSST bands (black lines), and maximum DCR is calculated for the difference in position of two photons from the same source at opposite ends of the band.}
 		\label{Fig:DCR-wavelength-ZA}
 \end{center}
 \end{figure*}
@@ -131,7 +131,7 @@ A quick summary of and notes on the existing literature covering DCR. Each refer
 	\item Good background.
 	\item Uses a different implementation, "the method recommended by Auer
 	and Standish".
-	\item This is the function implemented in `pypal` which is used by
+	\item This is the function implemented in `palpy` which is used by
 	some (but not all?) code in the `sims` stack.
 	\item Uses a model atmosphere with temperature and pressure gradients,
 	integrated to the surface.  This I believe is different from \cite{Filippenko1982}
